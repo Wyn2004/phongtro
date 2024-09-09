@@ -1,0 +1,29 @@
+{
+  "development": {
+    "username": "root",
+    "password": "12345",
+    "database": "phongtro123",
+    "port": 3308,
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "longing": false
+  },
+  "test": {
+    "username": "root",
+    "password": "12345",
+    "database": "database_test",
+    "port": 3308,
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "12345",
+    "database": "database_production",
+    "port": 3308,
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
+
+
