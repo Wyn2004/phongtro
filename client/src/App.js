@@ -3,7 +3,7 @@ import {
   Home, Login, RentalApartment, DetailPost,
   RentalHome, RentalRoom, RentalSpace, HomePage
 } from './containers/public';
-import {path} from './utils/constant'
+import { path } from './utils/constant'
 
 function App() {
   return (

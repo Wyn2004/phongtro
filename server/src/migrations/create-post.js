@@ -1,55 +1,61 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-    async up(queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Posts', {
-        id: {
+      id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.STRING
-        },
-        title: {
+      },
+      title: {
         type: Sequelize.STRING
-        },
-        star: {
+      },
+      star: {
         type: Sequelize.STRING,
         defaultValue: '0'
-        },
-        labelCode: {
+      },
+      labelCode: {
         type: Sequelize.STRING
-        },
-        address: {
+      },
+      address: {
         type: Sequelize.STRING
-        },
-        attributesID: {
+      },
+      attributesID: {
         type: Sequelize.STRING
-        },
-        categoryCode: {
+      },
+      categoryCode: {
         type: Sequelize.STRING
-        },
-        description: {
+      },
+      priceCode: {
+        type: Sequelize.STRING
+      },
+      areaCode: {
+        type: Sequelize.STRING
+      },
+      description: {
         type: Sequelize.TEXT
-        },
-        userID: {
+      },
+      userID: {
         type: Sequelize.STRING
-        },
-        overviewID: {
+      },
+      overviewID: {
         type: Sequelize.STRING
-        },
-        imageID: {
+      },
+      imageID: {
         type: Sequelize.STRING
-        },
-        createdAt: {
+      },
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
-        },
-        updatedAt: {
+      },
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-        }
+      }
     });
-    },
-    async down(queryInterface, Sequelize) {
+  },
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Posts');
-    }
+  }
 };

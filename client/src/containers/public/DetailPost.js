@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 const DetailPost = () => {
-    return (
-        <div>DetailPost</div>
-    )
-}
+  const param = useParams();
+  console.log(param);
 
-export default DetailPost
+  return <div>DetailPost</div>;
+};
+
+export default DetailPost;

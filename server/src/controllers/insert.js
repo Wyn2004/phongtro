@@ -1,13 +1,14 @@
-import * as insertService from '../services/insert'
+import * as insertService from '../services/insert';
 
-export const insert = async (req, res) => { 
-    try {
-        const response = await insertService.insertService()
-        return res.status(200).json(response)
-    } catch (error) {
-        return res.status(500).json({
-            err: -1,
-            msg: 'Fail as controller' + error
-        })
-    }
-}
+export const insert = async (req, res) => {
+  try {
+    const responseData = await insertService.insertService();
+    // const responseData = await insertService.insertPriceAndArea();
+    return res.status(200).json(responseData);
+  } catch (error) {
+    return res.status(500).json({
+      err: -1,
+      msg: 'Fail as controller' + error
+    });
+  }
+};
