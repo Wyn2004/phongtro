@@ -24,7 +24,6 @@ const List = ({ page }) => {
     params?.map(item => {
       searchObject = { ...searchObject, [item[0]]: item[1] };
     });
-    console.log(searchObject);
     dispatch(getPostsLimit(searchObject));
   }, [searchParams]);
 

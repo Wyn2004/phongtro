@@ -1,8 +1,12 @@
-export { default as Button } from './Button'
-export { default as InputForm } from './InputForm'
-export { default as SearchItem } from './SearchItem'
-export { default as ProvincesButton } from './ProvincesButton'
-export { default as Provinces } from './Provinces'
-export { default as Item } from './Item'
-export { default as  PageNumber} from './PageNumber'
-export { default as ItemSidebar } from './ItemSidebar'
+export { default as Button } from './Button';
+export { default as InputForm } from './InputForm';
+export { default as SearchItem } from './SearchItem';
+export { default as ProvincesButton } from './ProvincesButton';
+export { default as Provinces } from './Provinces';
+export { default as Item } from './Item';
+export { default as PageNumber } from './PageNumber';
+export { default as ItemSidebar } from './ItemSidebar';
+export { default as Contact } from './Contact';
+export { default as Intro } from './Intro';
+export { default as SmallItem } from './SmallItem';
+export { default as RelativePost } from './RelativePost';

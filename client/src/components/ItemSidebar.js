@@ -2,13 +2,10 @@ import React, { memo } from 'react';
 import icons from '../utils/icons';
 import { createSearchParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import { formatVietnameseToString } from '../utils/Common/formatVietnamese';
-import { useDispatch } from 'react-redux';
-import * as action from '../store/actions';
 
 const ItemSidebar = ({ title, content, isDouble, type }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useDispatch();
 
   const formatContent = content => {
     const oddEl = content?.filter((item, index) => index % 2 !== 0);

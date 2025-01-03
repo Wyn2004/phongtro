@@ -5,7 +5,7 @@ const sequelize = new Sequelize('phongtro123', 'root', '12345', {
   host: 'localhost',
   dialect: 'mysql',
   port: 3308, // Đảm bảo rằng đây là cổng đúng
-  logging: false
+  logging: false,
 });
 
 const connectDB = async () => {

@@ -8,22 +8,23 @@ import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 import { persistReducer } from 'redux-persist';
 
 // dinh nghia o file root reducer de choc vao  nhung file reducer khac
+
 const commonConfig = {
-  storage,
-  stateReconciler: autoMergeLevel2
+  storage, // Nơi lưu trữ: localStorage
+  stateReconciler: autoMergeLevel2 // Gộp state cũ và mới một cách thông minh
 };
 
 const authConfig = {
-  ...commonConfig,
-  key: 'auth',
-  whitelist: ['isLoggedIn', 'token']
+  ...commonConfig, // Kế thừa cấu hình chung
+  key: 'auth', // Tên khóa trong localStorage
+  whitelist: ['isLoggedIn', 'token'] // Chỉ persist 'isLoggedIn' và 'token'
 };
 
 const rootReducer = combineReducers({
-  auth: persistReducer(authConfig, authReducer),
-  user: userReducer,
-  post: postReducer,
-  app: appReducer
+  auth: persistReducer(authConfig, authReducer), // Bọc authReducer với persistReducer
+  user: userReducer, // Không persist
+  post: postReducer, // Không persist
+  app: appReducer // Không persist
 });
 
 export default rootReducer;

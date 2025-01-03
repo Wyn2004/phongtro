@@ -1,5 +1,4 @@
 import db from '../models/';
-
 require('dotenv').config();
 
 export const getPostsService = () =>
@@ -19,14 +18,9 @@ export const getPostsService = () =>
             model: db.Attribute,
             as: 'attributes',
             attributes: ['price', 'acreage', 'published', 'hashtag']
-          },
-          {
-            model: db.User,
-            as: 'user',
-            attributes: ['name', 'phone', 'zalo']
           }
         ],
-        attributes: ['id', 'title', 'star', 'address', 'description']
+        attributes: ['id', 'title', 'star', 'description']
       });
       resolve({
         err: resolve ? 0 : 1,
@@ -76,5 +70,47 @@ export const getPostsLimitService = (page, query) =>
       });
     } catch (error) {
       reject(error);
+    }
+  });
+
+export const getNewPost = () =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const response = await db.Post.findAll({
+        offset: 0,
+        limit: +process.env.LIMIT_NEW,
+        raw: true,
+        nest: true,
+        order: [['createdAt', 'DESC']],
+        include: [
+          {
+            model: db.Image,
+            as: 'images',
+            attributes: ['image']
+          },
+          {
+            model: db.Attribute,
+            as: 'attributes',
+            attributes: ['price', 'acreage', 'published', 'hashtag']
+          },
+          {
+            model: db.User,
+            as: 'user',
+            attributes: ['name', 'phone', 'zalo']
+          }
+        ],
+        attributes: ['id', 'title', 'star', 'address', 'description', 'createdAt', 'updatedAt']
+      });
+      resolve({
+        err: response ? 0 : 1,
+        msg: response ? 'Done' : 'Failure',
+        response
+      });
+    } catch (error) {
+      reject({
+        err: 1,
+        msg: 'Get Post Limit Failure',
+        response: error
+      });
     }
   });
