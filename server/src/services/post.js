@@ -35,6 +35,8 @@ export const getPostsService = () =>
 export const getPostsLimitService = (page, query) =>
   new Promise(async (resolve, reject) => {
     const offset = !page || +page < 1 ? 0 : +page - 1;
+    console.log(query);
+
     try {
       const response = await db.Post.findAndCountAll({
         where: query,
@@ -61,7 +63,7 @@ export const getPostsLimitService = (page, query) =>
             attributes: ['name', 'phone', 'zalo']
           }
         ],
-        attributes: ['id', 'title', 'star', 'address', 'description']
+        attributes: ['id', 'title', 'star', 'address', 'description', 'categoryCode']
       });
       resolve({
         err: resolve ? 0 : 1,

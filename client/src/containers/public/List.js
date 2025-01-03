@@ -1,18 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import { Button, Item } from '../../components/index';
-import { getPosts, getPostsLimit } from '../../store/actions/post';
+import { getPostsLimit } from '../../store/actions/post';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
-const List = ({ page }) => {
+const List = ({ categoryCode }) => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
 
-  const { posts } = useSelector(
-    state =>
-      /// vi da khai bao reducer nen state co hieu luc voi moi reducer o file rootReducer
-      state.post
-  );
+  const { posts } = useSelector(state => state.post);
   useEffect(() => {
     // check page cos null k
     let params = [];
@@ -24,8 +20,11 @@ const List = ({ page }) => {
     params?.map(item => {
       searchObject = { ...searchObject, [item[0]]: item[1] };
     });
+    console.log(categoryCode);
+
+    categoryCode && (searchObject.categoryCode = categoryCode);
     dispatch(getPostsLimit(searchObject));
-  }, [searchParams]);
+  }, [searchParams, categoryCode]);
 
   return (
     <div className="w-full border bg-white shadow-md rounded-lg p-2">
@@ -64,4 +63,4 @@ const List = ({ page }) => {
   );
 };
 
-export default List;
+export default memo(List);

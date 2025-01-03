@@ -12,7 +12,7 @@ import { dataArea, dataPrice } from '../../utils/data';
 require('dotenv').config();
 
 const hashPassword = password => bcrypt.hashSync(password, bcrypt.genSaltSync(12));
-const dataBody = chothuephongtro.body;
+const dataBody = nhachothue.body;
 // thay cái import trên để import data và cái categoryCode ở dưới
 
 /// data khac nhau cho overview, nho check lai
@@ -36,7 +36,7 @@ export const insertService = () =>
           labelCode: label,
           address: item?.header?.address,
           attributesID,
-          categoryCode: 'CTPT',
+          categoryCode: 'NCT',
           description: JSON.stringify(item?.mainContent.content),
           areaCode: dataArea.find(area => area.min < currentArea && area.max >= currentArea)?.code,
           priceCode: dataPrice.find(price => price.min < currentPrice && price.max >= currentPrice)?.code,
@@ -72,12 +72,17 @@ export const insertService = () =>
           }
         });
 
-        await db.User.create({
-          id: userID,
-          name: item?.contact?.content.find(i => i.name === 'Liên hệ:')?.content,
-          password: hashPassword('123456'),
-          phone: item?.contact?.content.find(i => i.name === 'Điện thoại:')?.content,
-          zalo: item?.contact?.content.find(i => i.name === 'Zalo')?.content
+        await db.User.findOrCreate({
+          where: {
+            phone: item?.contact?.content.find(i => i.name === 'Điện thoại:')?.content
+          },
+          defaults: {
+            id: userID,
+            name: item?.contact?.content.find(i => i.name === 'Liên hệ:')?.content,
+            password: hashPassword('123456'),
+            phone: item?.contact?.content.find(i => i.name === 'Điện thoại:')?.content,
+            zalo: item?.contact?.content.find(i => i.name === 'Zalo')?.content
+          }
         });
 
         await db.Image.create({
