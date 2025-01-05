@@ -1,12 +1,12 @@
 import db from '../models/';
 
-export const getAllPrice = () =>
+export const getAllProvince = () =>
   new Promise(async (resolve, reject) => {
     try {
-      const response = await db.Price.findAll({
+      const response = await db.Province.findAll({
         raw: true,
         attributes: ['code', 'value'],
-        order: [['order', 'ASC']]
+        order: [['code', 'ASC']]
       });
       resolve({
         err: response ? 0 : 1,

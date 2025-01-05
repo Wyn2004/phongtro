@@ -20,7 +20,6 @@ const List = ({ categoryCode }) => {
     params?.map(item => {
       searchObject = { ...searchObject, [item[0]]: item[1] };
     });
-    console.log(categoryCode);
 
     categoryCode && (searchObject.categoryCode = categoryCode);
     dispatch(getPostsLimit(searchObject));

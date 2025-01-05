@@ -14,6 +14,9 @@ export const getAllArea = () =>
         response
       });
     } catch (error) {
-      reject(error);
+      reject({
+        err: 1,
+        msg: 'Failure'
+      });
     }
   });

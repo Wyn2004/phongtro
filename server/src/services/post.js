@@ -28,7 +28,10 @@ export const getPostsService = () =>
         response
       });
     } catch (error) {
-      reject(error);
+      reject({
+        err: 1,
+        msg: 'Failure'
+      });
     }
   });
 
@@ -71,7 +74,10 @@ export const getPostsLimitService = (page, query) =>
         response
       });
     } catch (error) {
-      reject(error);
+      reject({
+        err: 1,
+        msg: 'Get Post Limit Failure'
+      });
     }
   });
 

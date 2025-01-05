@@ -4,6 +4,7 @@ import categoriesRouter from './category';
 import postController from './post';
 import priceController from './price';
 import areaController from './area';
+import provinceRoute from './province';
 
 const initRoutes = app => {
   app.use('/api/v1/auth', authRouter);
@@ -12,6 +13,7 @@ const initRoutes = app => {
   app.use('/api/v1/post', postController);
   app.use('/api/v1/price', priceController);
   app.use('/api/v1/area', areaController);
+  app.use('/api/v1/province', provinceRoute);
 
   return app.use('/', (req, res) => {
     res.send('server on ...');

@@ -22,6 +22,9 @@ export const getCategoriesService = () =>
         response
       });
     } catch (error) {
-      reject(error);
+      reject({
+        err: 1,
+        msg: 'Failed to get categories'
+      });
     }
   });

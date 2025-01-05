@@ -18,6 +18,7 @@ const HomePage = () => {
     dispatch(action.getAllPrices());
     dispatch(action.getAllAreas());
     dispatch(action.getNewPost());
+    dispatch(action.getAllProvinces());
   }, []);
 
   return (
